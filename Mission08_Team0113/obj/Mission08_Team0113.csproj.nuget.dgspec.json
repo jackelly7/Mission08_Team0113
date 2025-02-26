@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jackkelly/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj": {}
+    "/Users/ethanhudgins/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj": {}
   },
   "projects": {
-    "/Users/jackkelly/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj": {
+    "/Users/ethanhudgins/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jackkelly/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj",
+        "projectUniqueName": "/Users/ethanhudgins/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj",
         "projectName": "Mission08_Team0113",
-        "projectPath": "/Users/jackkelly/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj",
-        "packagesPath": "/Users/jackkelly/.nuget/packages/",
-        "outputPath": "/Users/jackkelly/RiderProjects/Mission08_Team0113/Mission08_Team0113/obj/",
+        "projectPath": "/Users/ethanhudgins/RiderProjects/Mission08_Team0113/Mission08_Team0113/Mission08_Team0113.csproj",
+        "packagesPath": "/Users/ethanhudgins/.nuget/packages/",
+        "outputPath": "/Users/ethanhudgins/RiderProjects/Mission08_Team0113/Mission08_Team0113/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jackkelly/.nuget/NuGet/NuGet.Config"
+          "/Users/ethanhudgins/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -36,9 +36,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/ethanhudgins/.dotnet/sdk/9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
