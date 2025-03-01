@@ -17,15 +17,27 @@
         </div>
         <div class="col-5 border p-3">
             <h5>Quadrant 1</h5>
-            <p>Blah</p>
-            <p>poop pee</p>
-            <p>fart</p>
+            @foreach (var task in Model.Where(t => t.IsImportant && t.IsUrgent))
+            {
+                <div class="task-item">
+                    <p>@task.Name</p>
+                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            }
         </div>
         <div class="col-5 border p-3">
             <h5>Quadrant 2</h5>
-            <p>Stinkyyyy</p>
-            <p>Squirt</p>
-            <p>wet</p>
+            @foreach (var task in Model.Where(t => t.IsImportant && !t.IsUrgent))
+            {
+                <div class="task-item">
+                    <p>@task.Name</p>
+                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            }
         </div>
     </div>
 
@@ -38,17 +50,27 @@
         </div>
         <div class="col-5 border p-3">
             <h5>Quadrant 3</h5>
-            <p>Angel</p>
-            <p>REEEESE</p>
-            <p>BANGGGGGGG</p>
-            <p>(layup)</p>
+            @foreach (var task in Model.Where(t => !t.IsImportant && t.IsUrgent))
+            {
+                <div class="task-item">
+                    <p>@task.Name</p>
+                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            }
         </div>
         <div class="col-5 border p-3">
             <h5>Quadrant 4</h5>
-            <p>idk</p>
-            <p>blahs</p>
-            <p>hilton</p>
-            <p>teach</p>
+            @foreach (var task in Model.Where(t => !t.IsImportant && !t.IsUrgent))
+            {
+                <div class="task-item">
+                    <p>@task.Name</p>
+                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            }
         </div>
     </div>
 </div>
