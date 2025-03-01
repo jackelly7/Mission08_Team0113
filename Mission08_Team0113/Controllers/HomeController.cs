@@ -15,32 +15,35 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var tasks = _repo.Tasks;
+        return View(tasks);
     }
 
-    public IActionResult Delete()
+
+    [HttpPost]
+    public IActionResult Delete(int id)
     {
-        return View();
+        var task = _repo.Tasks.FirstOrDefault(t => t.TaskId == id);
+        if (task == null)
+        {
+            return NotFound();
+        }
+
+        return ViewTask();
+    }
+
+
+    public IActionResult ViewTask()
+    {
+        var task = _repo.Tasks.ToList();
+        return View(task);
+    }
+
+    public IActionResult Quadrant(int quadrantId)
+    {
+        var tasks = _repo.Tasks.Where(t => t.TaskId == quadrantId).ToList();
+
+        return View(tasks);
     }
     
-    public IActionResult Task()
-    {
-        return View();
-    }
-    
-    public IActionResult View()
-    {
-        return View();
-    }
-
-    public IActionResult Quadrant()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
 }
