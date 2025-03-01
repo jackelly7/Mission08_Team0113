@@ -4,14 +4,14 @@
 @{
 }
 
-@model Application
+@model Mission08_Team0113.Models.Task
 
 <h2>Confirm Deletion</h2>
-<h3>@Model.Title, @Model.Category</h3>
+<h3>@Model.TaskName, @Model.CategoryName</h3>
 <form method="post">
     <input type="hidden" asp-for="TaskId" />
 
-    <button type"submit">Delete</button>
+    <button type="submit">Delete</button>
     <a class="btn btn-info" asp-controller="Home" asp-action="View">Cancel</a>
 </form>
 
