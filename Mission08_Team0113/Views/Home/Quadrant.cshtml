@@ -1,4 +1,6 @@
-﻿<div class="container text-center mt-4">
+﻿@model List<Task>
+
+<div class="container text-center mt-4">
     <h2>Tasks</h2>
 
     <!-- Header Row -->
@@ -16,26 +18,28 @@
             Important
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 1</h5>
-            @foreach (var task in Model.Where(t => t.IsImportant && t.IsUrgent))
+            <h5>Quadrant 1 - Urgent & Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == 1))
             {
-                <div class="task-item">
-                    <p>@task.Name</p>
-                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Are you sure?')">Delete</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @task.DueDate.ToShortDateString()</p>
+                    <div>
+                        <a href="/Task/Edit/@task.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Task/Delete/@task.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
                 </div>
             }
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 2</h5>
-            @foreach (var task in Model.Where(t => t.IsImportant && !t.IsUrgent))
+            <h5>Quadrant 2 - Not Urgent but Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == 2))
             {
-                <div class="task-item">
-                    <p>@task.Name</p>
-                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Are you sure?')">Delete</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @task.DueDate.ToShortDateString()</p>
+                    <div>
+                        <a href="/Task/Edit/@task.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Task/Delete/@task.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
                 </div>
             }
         </div>
@@ -49,26 +53,28 @@
             Not Important
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 3</h5>
-            @foreach (var task in Model.Where(t => !t.IsImportant && t.IsUrgent))
+            <h5>Quadrant 3 - Urgent but Not Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == 3))
             {
-                <div class="task-item">
-                    <p>@task.Name</p>
-                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Are you sure?')">Delete</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @task.DueDate.ToShortDateString()</p>
+                    <div>
+                        <a href="/Task/Edit/@task.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Task/Delete/@task.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
                 </div>
             }
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 4</h5>
-            @foreach (var task in Model.Where(t => !t.IsImportant && !t.IsUrgent))
+            <h5>Quadrant 4 - Not Urgent & Not Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == 4))
             {
-                <div class="task-item">
-                    <p>@task.Name</p>
-                    <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary btn-sm">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger btn-sm"
-                       onclick="return confirm('Are you sure?')">Delete</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @task.DueDate.ToShortDateString()</p>
+                    <div>
+                        <a href="/Task/Edit/@task.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Task/Delete/@task.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
                 </div>
             }
         </div>
