@@ -1,0 +1,48 @@
+﻿@* @model Mission08_Team0113.Models.Task *@
+@model Application
+
+<h1>Task/View</h1>
+
+
+<form method="post">
+
+    @* <label asp-for="ApplicationID"></label> *@
+    <input type="hidden" asp-for="TaskId" />
+    <br />
+
+    <label asp-for="TaskName">TaskName:</label>
+    <input asp-for="TaskName" />
+    <br />
+
+    <label asp-for="DueDate">Due Date:</label>
+    <input asp-for="DueDate" type="date" class="form-control" required />
+    <br />
+
+    <label asp-for="Quadrant">Quadrant:</label>
+    <select asp-for="Quadrant">
+        <option value="1">Quadrant 1 - Urgent & Important</option>
+        <option value="2">Quadrant 2 - Not Urgent but Important</option>
+        <option value="3">Quadrant 3 - Urgent but Not Important</option>
+        <option value="4">Quadrant 4 - Not Urgent & Not Important</option>
+    </select>
+    <br />
+
+
+    @* <label asp-for="ApplicationID"></label> *@
+    <input type="hidden" asp-for="CategoryId" />
+    <br />
+
+    <label asp-for="CategoryName">CategoryName:</label>
+    <input asp-for="CategoryName" />
+    <br />
+    <label asp-for="Completed">Completed</label>
+    <select asp-for="Completed">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+
+
+    <button typeof="submit">Submit</button>
+
+</form>
