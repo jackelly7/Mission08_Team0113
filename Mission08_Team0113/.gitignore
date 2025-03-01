@@ -1,0 +1,53 @@
+# Ignore Visual Studio specific files
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build outputs
+bin/
+obj/
+out/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.csproj.user
+
+# Ignore package dependencies
+packages/
+node_modules/
+npm-debug.log
+yarn.lock
+
+# Ignore environment and config files
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Ignore publish and deployment files
+wwwroot/
+dist/
+publish/
+*.publishsettings
+*.azurePubxml
+
+# Ignore IDE and editor settings
+*.suo
+*.user
+*.sqlite
+*.db
+*.ldb
+
+# Ignore .NET Core dependency directories
+project.lock.json
+project.assets.json
+.DS_Store
+
+# Ignore Rider and JetBrains-specific files
+.idea/
+*.sln.iml
+
