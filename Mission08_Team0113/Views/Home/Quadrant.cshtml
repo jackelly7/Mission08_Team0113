@@ -1,4 +1,6 @@
-﻿<div class="container text-center mt-4">
+﻿@model List<Mission08_Team0113.Models.Task>
+
+<div class="container text-center mt-4">
     <h2>Tasks</h2>
 
     <!-- Header Row -->
@@ -16,16 +18,30 @@
             Important
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 1</h5>
-            <p>Blah</p>
-            <p>poop pee</p>
-            <p>fart</p>
+            <h5>Quadrant 1 - Urgent & Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == "1"))
+            {
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToShortDateString() : "No Due Date")
+                    </p>
+                    <div>
+                        <a href="/Home/Task/@task.TaskId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Home/Delete/@task.TaskId" class="btn btn-danger btn-sm">Delete</a>                    </div>
+                </div>
+            }
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 2</h5>
-            <p>Stinkyyyy</p>
-            <p>Squirt</p>
-            <p>wet</p>
+            <h5>Quadrant 2 - Not Urgent but Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == "2"))
+            {
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToShortDateString() : "No Due Date")
+                    </p>
+                    <div>
+                        <a href="/Home/Task/@task.TaskId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Home/Delete/@task.TaskId" class="btn btn-danger btn-sm">Delete</a>                    </div>
+                </div>
+            }
         </div>
     </div>
 
@@ -37,18 +53,32 @@
             Not Important
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 3</h5>
-            <p>Angel</p>
-            <p>REEEESE</p>
-            <p>BANGGGGGGG</p>
-            <p>(layup)</p>
+            <h5>Quadrant 3 - Urgent but Not Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == "3"))
+            {
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToShortDateString() : "No Due Date")
+                    </p>
+                    <div>
+                        <a href="/Home/Task/@task.TaskId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Home/Delete/@task.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            }
         </div>
         <div class="col-5 border p-3">
-            <h5>Quadrant 4</h5>
-            <p>idk</p>
-            <p>blahs</p>
-            <p>hilton</p>
-            <p>teach</p>
+            <h5>Quadrant 4 - Not Urgent & Not Important</h5>
+            @foreach (var task in Model.Where(t => t.Quadrant == "4"))
+            {
+                <div class="d-flex justify-content-between align-items-center">
+                    <p>@task.TaskName - Due: @(task.DueDate.HasValue ? task.DueDate.Value.ToShortDateString() : "No Due Date")
+                    </p>
+                    <div>
+                        <a href="/Home/Task/@task.TaskId" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/Home/Delete/@task.TaskId" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
