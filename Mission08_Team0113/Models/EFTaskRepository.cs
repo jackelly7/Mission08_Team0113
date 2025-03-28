@@ -9,12 +9,19 @@
             _context = temp;
         }
 
-        public List<Task> Tasks => _context.Tasks.ToList(); 
-        
-        
+        public List<Task> Tasks => _context.Tasks.ToList();
+
+        public IQueryable<Category> Categories => _context.Categories;
+
         public void AddTask(Task task)
         {
             _context.Tasks.Add(task);
+            _context.SaveChanges();
+        }
+
+        public void UpdateTask(Task task)
+        {
+            _context.Update(task);
             _context.SaveChanges();
         }
 

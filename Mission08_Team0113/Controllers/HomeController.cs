@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0113.Models;
 
@@ -50,6 +50,7 @@ public class HomeController : Controller
     public IActionResult Task()
     {
         var newTask = new Mission08_Team0113.Models.Task();
+        ViewBag.Categories = _repo.Categories.ToList();
         return View(newTask); 
     }
 
@@ -64,21 +65,43 @@ public class HomeController : Controller
             return NotFound();
         }
 
+        ViewBag.Categories = _repo.Categories.ToList();
+
         return View("Task", task);
     }
+
+    [HttpPost]
+    public IActionResult EditTask(Mission08_Team0113.Models.Task task)
+    {
+        if (ModelState.IsValid)
+        {
+            _repo.UpdateTask(task); // <-- make sure this exists in your repository
+            return RedirectToAction("Index");
+        }
+
+        ViewBag.Categories = _repo.Categories.ToList();
+        return View("Task", task);
+    }
+
 
 
     [HttpPost]
     public IActionResult CreateTask(Mission08_Team0113.Models.Task task)
     {
+        Console.WriteLine($"POST: {task.TaskName}, Valid: {ModelState.IsValid}");
+
         if (ModelState.IsValid)
         {
             _repo.AddTask(task);
             return RedirectToAction("Index");
         }
-    
+
+        // ✅ Make sure the category list is still populated when re-rendering form
+        ViewBag.Categories = _repo.Categories.ToList();
         return View("Task", task);
     }
+
+
 
 
     [HttpGet]

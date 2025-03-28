@@ -12,9 +12,9 @@ namespace Mission08_Team0113.Models
         public DateTime? DueDate { get; set; }
         [Required]
         public string Quadrant { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Category is required.")]
         [ForeignKey(name: "CategoryId")]
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public Category? CategoryName { get; set; }
         public bool? Completed { get; set; }
 

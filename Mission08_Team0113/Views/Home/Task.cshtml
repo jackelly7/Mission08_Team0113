@@ -3,8 +3,9 @@
 
 @* <h2>@(Model.TaskId == 0 ? "Create Task" : "Edit Task")</h2> *@
 
-<form method="post"
-      asp-action="@(Model.TaskId == 0 ? "CreateTask" : "EditTask")" class="container bg-light p-4 rounded shadow-sm">
+<form method="post" asp-action="@(Model.TaskId == 0 ? "CreateTask" : "EditTask")" class="container bg-light p-4 rounded shadow-sm">
+    @Html.AntiForgeryToken()
+
     <input type="hidden" asp-for="TaskId" />
 
     <div class="mb-3">
@@ -20,19 +21,22 @@
     <div class="mb-3">
         <label asp-for="Quadrant" class="form-label">Quadrant:</label>
         <select asp-for="Quadrant" class="form-select">
-            <option value="1">Quadrant 1 - Urgent & Important</option>
-            <option value="2">Quadrant 2 - Not Urgent but Important</option>
-            <option value="3">Quadrant 3 - Urgent but Not Important</option>
-            <option value="4">Quadrant 4 - Not Urgent & Not Important</option>
+            <option value="Q1">Quadrant 1 - Urgent & Important</option>
+            <option value="Q2">Quadrant 2 - Not Urgent but Important</option>
+            <option value="Q3">Quadrant 3 - Urgent but Not Important</option>
+            <option value="Q4">Quadrant 4 - Not Urgent & Not Important</option>
         </select>
     </div>
 
     <input type="hidden" asp-for="CategoryId" />
 
     <div class="mb-3">
-        <label asp-for="CategoryName" class="form-label">Category Name:</label>
-        <input asp-for="CategoryName" class="form-control" required />
+        <label asp-for="CategoryId" class="form-label">Category:</label>
+        <select asp-for="CategoryId" class="form-select" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"))">
+            <option value="">-- Select Category --</option>
+        </select>
     </div>
+
 
     <div class="mb-3">
         <label asp-for="Completed" class="form-label">Completed:</label>
