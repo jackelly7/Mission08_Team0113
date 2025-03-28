@@ -6,26 +6,87 @@ namespace Mission08_Team0113.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private ITaskRepository _repo;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ITaskRepository temp)
     {
-        _logger = logger;
+        _repo = temp;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var tasks = _repo.Tasks;
+        return View(tasks);
     }
 
-    public IActionResult Privacy()
+    [HttpGet]
+    public IActionResult Delete(int id)
     {
-        return View();
+        var taskToDelete = _repo.Tasks.SingleOrDefault(t => t.TaskId == id);
+
+        if (taskToDelete == null)
+        {
+            return NotFound();
+        }
+        
+        return View(taskToDelete);
+    }
+    
+    [HttpPost]
+    public IActionResult ConfirmDelete(int TaskId)
+    {
+        var taskToDelete = _repo.Tasks.SingleOrDefault(t => t.TaskId == TaskId);
+
+        if (taskToDelete == null)
+        {
+            return NotFound();
+        }
+        
+        _repo.DeleteTask(taskToDelete);
+
+        return RedirectToAction("Quadrant");
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult Task()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        var newTask = new Mission08_Team0113.Models.Task();
+        return View(newTask); 
     }
+
+    
+    [HttpGet]
+    public IActionResult EditTask(int id)
+    {
+        var task = _repo.Tasks.SingleOrDefault(t => t.TaskId == id);
+
+        if (task == null)
+        {
+            return NotFound();
+        }
+
+        return View("Task", task);
+    }
+
+
+    [HttpPost]
+    public IActionResult CreateTask(Mission08_Team0113.Models.Task task)
+    {
+        if (ModelState.IsValid)
+        {
+            _repo.AddTask(task);
+            return RedirectToAction("Index");
+        }
+    
+        return View("Task", task);
+    }
+
+
+    [HttpGet]
+    public IActionResult Quadrant()
+    {
+        var tasks = _repo.Tasks.ToList();
+
+        return View(tasks);
+    }
+    
 }
